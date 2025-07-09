@@ -1,2 +1,2 @@
-# AlexandreLachance-CV
+# Alexandre Lachance
 Curriculum Vitae d'Alexandre Lachance
