@@ -548,7 +548,7 @@
         // Chargement du logo
         async function loadLogo() {
             try {
-                const logoData = await window.fs.readFile('A_logo.jpg');
+                const logoData = await window.fs.readFile('Logo_A.jpg');
                 const logoBlob = new Blob([logoData], { type: 'image/jpeg' });
                 const logoUrl = URL.createObjectURL(logoBlob);
                 
