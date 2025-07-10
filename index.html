@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandre Lachance - Technicien en Support Informatique</title>
+    <title>Alexandre Lachance - Technicien Support Informatique</title>
     <style>
         * {
             margin: 0;
@@ -14,348 +14,474 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #0D47A1;
-            background-color: #FFFFFF;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%);
-            color: white;
-            padding: 2rem 0;
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .profile-section {
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .profile-info h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #FFFFFF;
-        }
-
-        .profile-info .title {
-            font-size: 1.2rem;
-            color: #FFC107;
-            font-weight: 500;
-        }
-
-        .profile-description {
-            max-width: 600px;
-            margin: 1.5rem auto;
-            font-size: 1.1rem;
-            color: #F5F5F5;
-        }
-
-        /* Buttons */
-        .cta-buttons {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background-color: #FFC107;
-            color: #0D47A1;
-        }
-
-        .btn-primary:hover {
-            background-color: #FF9800;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: #FFFFFF;
-            border: 2px solid #FFC107;
-        }
-
-        .btn-secondary:hover {
-            background-color: #FFC107;
-            color: #0D47A1;
-        }
-
-        /* Main Content */
-        main {
-            padding: 3rem 0;
-        }
-
-        .section {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            border-radius: 10px;
-        }
-
-        .section:nth-child(even) {
-            background-color: #F5F5F5;
-        }
-
-        .section h2 {
-            color: #1E88E5;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid #FFC107;
-            padding-bottom: 0.5rem;
-        }
-
-        /* Experience */
-        .experience-item {
-            background: white;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #1E88E5;
-            box-shadow: 0 2px 5px rgba(30, 136, 229, 0.1);
-        }
-
-        .experience-item h3 {
-            color: #0D47A1;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-item .company {
-            color: #FF9800;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-item .period {
-            color: #757575;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Education */
-        .education-item {
-            background: white;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            border-left: 4px solid #FFC107;
-            box-shadow: 0 2px 5px rgba(255, 193, 7, 0.1);
-        }
-
-        .education-item h3 {
-            color: #0D47A1;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-item .institution {
-            color: #1E88E5;
-            font-weight: 600;
-        }
-
-        .education-item .year {
-            color: #757575;
-            font-size: 0.9rem;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-top: 4px solid #1E88E5;
-            box-shadow: 0 2px 5px rgba(30, 136, 229, 0.1);
-        }
-
-        .skill-category h3 {
-            color: #0D47A1;
-            margin-bottom: 1rem;
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            padding: 0.3rem 0;
-            color: #757575;
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .skill-category li:before {
-            content: "▶";
-            color: #FFC107;
-            position: absolute;
-            left: 0;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #0D47A1 0%, #1E88E5 100%);
+            font-size: 60px;
             color: white;
-            text-align: center;
-            padding: 2rem 0;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .name {
+            font-size: 3em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .title {
+            font-size: 1.5em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
         }
 
         .contact-info {
-            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
-        .contact-info a {
-            color: #FFC107;
+        .contact-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 12px 18px;
+            margin: 8px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-item {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '💼';
+            position: absolute;
+            top: 30px;
+            left: -15px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.2em;
+        }
+
+        .job-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .period {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .achievements {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements li {
+            background: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 35px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 15px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .education-item {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .degree {
+            font-size: 1.3em;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .school {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .year {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
             text-decoration: none;
-            margin: 0 1rem;
+            display: inline-block;
+            margin: 10px;
         }
 
-        .contact-info a:hover {
-            color: #FF9800;
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .profile-section {
+            .name {
+                font-size: 2em;
+            }
+            
+            .contact-info {
                 flex-direction: column;
-                text-align: center;
+                gap: 15px;
             }
-
-            .profile-info h1 {
-                font-size: 2rem;
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 200px;
+            
+            .section {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="profile-section">
-                <div class="profile-info">
-                    <h1>Alexandre Lachance</h1>
-                    <div class="title">Technicien en Support Informatique</div>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="profile-img">AL</div>
+                <h1 class="name">Alexandre Lachance</h1>
+                <p class="title">Technicien en Support Informatique</p>
+                <div class="contact-info">
+                    <div class="contact-item">📍 Trois-Rivières, QC</div>
+                    <div class="contact-item">📧 alexandre.lachance@email.com</div>
+                    <div class="contact-item">📱 (819) XXX-XXXX</div>
                 </div>
-            </div>
-            <div class="profile-description">
-                Technicien en support informatique passionné avec plusieurs années d'expérience en administration de systèmes, gestion des infrastructures TI et assistance aux utilisateurs. Reconnu pour ma capacité à diagnostiquer et résoudre efficacement les incidents tout en maintenant un service client exceptionnel.
-            </div>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Me Contacter</a>
-                <a href="#" class="btn btn-secondary">Télécharger CV</a>
             </div>
         </div>
-    </header>
 
-    <main>
-        <div class="container">
-            <section class="section">
-                <h2>Expérience Professionnelle</h2>
-                
-                <div class="experience-item">
-                    <h3>Technicien en Support Informatique</h3>
-                    <div class="company">Technologie Informatique de l'Île</div>
-                    <div class="period">2024 - Présent</div>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Technicien en Support Informatique</h3>
-                    <div class="company">Centre Agricole de Nicolet</div>
-                    <div class="period">2024</div>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Technicien en Support Informatique</h3>
-                    <div class="company">ATK Technologies</div>
-                    <div class="period">Décembre 2022 - 2023</div>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Technicien en Support Informatique</h3>
-                    <div class="company">ABI de Bécancour</div>
-                    <div class="period">Octobre 2021 - Janvier 2022</div>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Technicien en Support Informatique</h3>
-                    <div class="company">Groupe Vincent</div>
-                    <div class="period">Mai 2019 - Octobre 2020</div>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Technicien en Support Informatique</h3>
-                    <div class="company">CGI</div>
-                    <div class="period">Juillet 2018 - Janvier 2019</div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Formation</h2>
-                
-                <div class="education-item">
-                    <h3>DEP en Soutien Informatique</h3>
-                    <div class="institution">Centre Professionnel Bel-Avenir</div>
-                    <div class="year">2015</div>
-                </div>
-
-                <div class="education-item">
-                    <h3>Formation Continue</h3>
-                    <div class="institution">Cégep de Trois-Rivières</div>
-                    <div class="year">2021</div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Certifications</h2>
-                
-                <div class="education-item">
-                    <h3>Certification Cloudli</h3>
-                    <div class="institution">Cloudli</div>
-                    <div class="year">2023</div>
-                </div>
-            </section>
+        <!-- Profil professionnel -->
+        <div class="section">
+            <h2 class="section-title">Profil Professionnel</h2>
+            <p style="font-size: 1.1em; text-align: center; color: #555; max-width: 800px; margin: 0 auto;">
+                Technicien en support informatique passionné avec plusieurs années d'expérience en administration de systèmes, 
+                gestion des infrastructures TI et assistance aux utilisateurs. Reconnu pour ma capacité à diagnostiquer et 
+                résoudre efficacement les incidents tout en maintenant un service client exceptionnel.
+            </p>
         </div>
-    </main>
 
-    <footer id="contact">
-        <div class="container">
-            <div class="contact-info">
-                <p>Contactez-moi pour discuter de vos besoins en support informatique</p>
+        <!-- Compétences -->
+        <div class="section">
+            <h2 class="section-title">Compétences Techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🛠️ Support et Assistance Technique</h3>
+                    <div class="skill-item">Gestion de tickets (Freshdesk, Autotask)</div>
+                    <div class="skill-item">Outils RMM (Datto RMM, Super Ops)</div>
+                    <div class="skill-item">Diagnostic matériel et logiciel</div>
+                    <div class="skill-item">Support à distance et sur site</div>
+                    <div class="skill-item">Documentation technique (ITGlue)</div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🏗️ Infrastructure et Systèmes</h3>
+                    <div class="skill-item">Microsoft Exchange & Entra (Azure AD)</div>
+                    <div class="skill-item">Virtualisation Hyper-V</div>
+                    <div class="skill-item">Systèmes téléphoniques Cloudli</div>
+                    <div class="skill-item">Microsoft Teams</div>
+                    <div class="skill-item">Solutions de sauvegarde (Datto Backup)</div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>👥 Formation et Communication</h3>
+                    <div class="skill-item">Formation d'utilisateurs finaux</div>
+                    <div class="skill-item">Vulgarisation technique</div>
+                    <div class="skill-item">Création de guides d'utilisation</div>
+                    <div class="skill-item">Gestion d'événements techniques</div>
+                </div>
             </div>
-            <p>&copy; 2024 Alexandre Lachance - Tous droits réservés</p>
         </div>
-    </footer>
+
+        <!-- Expérience professionnelle -->
+        <div class="section">
+            <h2 class="section-title">Expérience Professionnelle</h2>
+            
+            <div class="experience-item">
+                <h3 class="job-title">Agent en Support Informatique</h3>
+                <p class="company">Technologie Informatique de l'Île</p>
+                <p class="period">2024 - Présent</p>
+                <ul class="achievements">
+                    <li>Administration complète des systèmes de gestion de tickets (Freshdesk, Autotask)</li>
+                    <li>Gestion des accès utilisateurs dans Microsoft Exchange et Azure AD</li>
+                    <li>Optimisation des performances des postes de travail et serveurs virtuels Hyper-V</li>
+                    <li>Rédaction de documentation technique et utilisation d'outils IA pour l'efficacité</li>
+                    <li>Support spécialisé pour programmes de radiologie médicale et environnements municipaux</li>
+                    <li>Résolution de 95% des tickets de niveau 1 et 2 dans les délais établis</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3 class="job-title">Technicien en Support Informatique</h3>
+                <p class="company">Centre Agricole de Nicolet</p>
+                <p class="period">2024</p>
+                <ul class="achievements">
+                    <li>Traitement efficace des tickets techniques via Super Ops RMM</li>
+                    <li>Administration des accès utilisateurs et maintenance préventive</li>
+                    <li>Installation et configuration de postes de travail Windows</li>
+                    <li>Formation personnalisée aux utilisateurs sur les outils informatiques</li>
+                    <li>Amélioration des procédures de support et documentation</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3 class="job-title">Agent en Support Informatique</h3>
+                <p class="company">ATK Technologies</p>
+                <p class="period">Décembre 2022 - 2023</p>
+                <ul class="achievements">
+                    <li>Administration avancée des systèmes téléphoniques Cloudli</li>
+                    <li>Intégration complète avec Microsoft Teams pour la communication unifiée</li>
+                    <li>Gestion des serveurs Exchange et Azure AD pour 200+ utilisateurs</li>
+                    <li>Mise en place et supervision des sauvegardes serveurs (Datto Backup)</li>
+                    <li>Virtualisation et optimisation des serveurs Hyper-V</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3 class="job-title">Technicien Informatique</h3>
+                <p class="company">ABI de Bécancour</p>
+                <p class="period">Octobre 2021 - Janvier 2022</p>
+                <ul class="achievements">
+                    <li>Déploiement et remplacement de 50+ postes informatiques</li>
+                    <li>Support technique de niveau 2 pour utilisateurs industriels</li>
+                    <li>Migration de données et configuration de nouveaux équipements</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3 class="job-title">Technicien Informatique</h3>
+                <p class="company">Groupe Vincent</p>
+                <p class="period">Mai 2019 - Octobre 2020</p>
+                <ul class="achievements">
+                    <li>Support technique quotidien pour 100+ utilisateurs</li>
+                    <li>Formation du personnel sur les outils informatiques d'entreprise</li>
+                    <li>Gestion des stocks informatiques et suivi des inventaires</li>
+                    <li>Administration du réseau d'entreprise et des accès utilisateurs</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3 class="job-title">Consultant en Centre d'Appel</h3>
+                <p class="company">CGI</p>
+                <p class="period">Juillet 2018 - Janvier 2019</p>
+                <ul class="achievements">
+                    <li>Résolution d'incidents selon les procédures ITIL</li>
+                    <li>Gestion complète des tickets de l'ouverture à la fermeture</li>
+                    <li>Maintien d'un taux de satisfaction client de 98%</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Formation -->
+        <div class="section">
+            <h2 class="section-title">Formation et Certifications</h2>
+            
+            <div class="education-item">
+                <h3 class="degree">🎓 Soutien Informatique</h3>
+                <p class="school">Centre Professionnel Bel-Avenir</p>
+                <p class="year">2015</p>
+            </div>
+
+            <div class="education-item">
+                <h3 class="degree">🎓 Réseautique 1 (CCNA)</h3>
+                <p class="school">Cégep de Trois-Rivières</p>
+                <p class="year">2021</p>
+            </div>
+
+            <div class="education-item">
+                <h3 class="degree">🎓 Certification Cloudli Académie</h3>
+                <p class="school">Cloudli</p>
+                <p class="year">2023</p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 style="margin-bottom: 20px;">Prêt à collaborer ?</h2>
+            <p style="font-size: 1.2em; margin-bottom: 30px;">
+                Contactez-moi pour discuter de vos besoins en support informatique
+            </p>
+            <a href="mailto:alexandre.lachance@email.com" class="cta-button">Me Contacter</a>
+            <a href="#" class="cta-button">Télécharger CV</a>
+        </div>
+    </div>
 </body>
 </html>
