@@ -582,7 +582,7 @@
         async function loadLogo() {
             try {
                 const logoData = await window.fs.readFile('Logo_A.jpg');
-                const logoBlob = new Blob([logoData], { type: 'image/jpeg' });
+                const logoBlob = new Blob([logoData], { type: 'image/jpg' });
                 const logoUrl = URL.createObjectURL(logoBlob);
                 
                 const profileDiv = document.getElementById('profileImage');
