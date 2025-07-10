@@ -63,7 +63,7 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #1e7cdc, #ffa500);
+            background: rgba(255, 255, 255, 0.9);
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
@@ -73,6 +73,14 @@
             font-weight: 600;
             box-shadow: 0 8px 24px rgba(30, 124, 220, 0.3);
             border: 3px solid rgba(255, 255, 255, 0.8);
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .name {
@@ -364,7 +372,7 @@
         <!-- Header -->
         <div class="header">
             <div class="header-content">
-                <div class="profile-img">AL</div>
+                <div class="profile-img" id="profileImage">AL</div>
                 <h1 class="name">Alexandre Lachance</h1>
                 <p class="title">Technicien en Support Informatique</p>
                 <div class="contact-info">
@@ -536,6 +544,24 @@
     <script>
         let phoneRevealed = false;
         let hoverTimeout;
+
+        // Chargement du logo
+        async function loadLogo() {
+            try {
+                const logoData = await window.fs.readFile('A_logo.png');
+                const logoBlob = new Blob([logoData], { type: 'image/png' });
+                const logoUrl = URL.createObjectURL(logoBlob);
+                
+                const profileDiv = document.getElementById('profileImage');
+                profileDiv.innerHTML = `<img src="${logoUrl}" alt="Logo Alexandre Lachance">`;
+            } catch (error) {
+                console.log('Logo non trouvé, utilisation des initiales par défaut');
+                // Garde les initiales si le logo n'est pas trouvé
+            }
+        }
+
+        // Chargement du logo au démarrage
+        window.addEventListener('load', loadLogo);
 
         function togglePhone() {
             const phoneItem = document.querySelector('.phone-item');
