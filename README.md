@@ -1,11 +1,11 @@
-#Mon CV en ligne
+# Mon CV en ligne
 Curriculum Vitae d'Alexandre Léonard Lachance
 
 Ce dépôt héberge un site web personnel sur GitHub Pages, dédié à mon parcours professionnel en tant que technicien informatique. Vous y trouverez mes expériences, compétences et réalisations.
 
 Lien vers le site : [mon curriculum vitea en ligne(https://lachance1e.github.io/AlexandreLachance/).
 
-#Objectif
+# Objectif
 Ce site vise à présenter mon profil professionnel de manière accessible et interactive. Il est conçu pour les recruteurs, collègues ou toute personne intéressée par mon expertise en soutien informatique.
 
 Confidentialité et données personnelles
