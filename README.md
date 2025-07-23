@@ -16,4 +16,6 @@ Pour plus d'informations, consultez la politique de confidentialité de GitHub.
 ## Confidentialité et données personnelles
 Aucune donnée personnelle n'est collectée par ce site. 
 Étant donné qu'il est hébergé sur la plateforme GitHub, c'est GitHub qui gère toute collecte éventuelle de données (par exemple, via leurs outils d'analyse). 
-Pour plus d'informations, consultez la **politique de confidentialité de GitHub** : [https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
+
+Pour plus d'informations, consultez la **politique de confidentialité de GitHub**
+[https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
